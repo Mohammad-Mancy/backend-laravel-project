@@ -56,4 +56,14 @@ class RestaurantController extends Controller
             "results" => $review
         ], 200);
     }
+    //Approve review
+    public function approveReview(Request $request){
+        $review = Review::find($request->id);
+        $review->status="approved";
+        $review->update();
+        return response()->json([
+            "status" => "Success",
+            "results" => $review
+        ], 200);
+    }
 }

@@ -11,6 +11,7 @@ Route::post('/register', [UserController::class, 'signUp']);
 Route::post('/login', [UserController::class, 'logIn']);
 Route::post('/add_restaurant', [RestaurantController::class, 'addRestaurant']);
 Route::post('/add_review', [RestaurantController::class, 'addReview']);
+Route::post('/approve_review', [RestaurantController::class, 'approveReview']);
 
 //GET methods
 Route::get('/all_user/{id?}', [UserController::class, 'getAllUsers']);
