@@ -9,6 +9,7 @@ use App\Http\Controllers\RestaurantController;
 //POST methods
 Route::post('/register', [UserController::class, 'signUp']);
 Route::post('/login', [UserController::class, 'logIn']);
+Route::post('/add_restaurant', [RestaurantController::class, 'addRestaurant']);
 
 //GET methods
 Route::get('/all_user/{id?}', [UserController::class, 'getAllUsers']);
