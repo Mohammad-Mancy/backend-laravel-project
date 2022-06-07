@@ -48,4 +48,12 @@ class RestaurantController extends Controller
             "status" => "Success"
         ], 200);
     }
+    //GET all on progress reviews
+    public function getOnProgressReview(){
+        $review = Review::where("status", "LIKE", "on progress")->get();
+        return response()->json([
+            "status" => "Success",
+            "results" => $review
+        ], 200);
+    }
 }

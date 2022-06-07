@@ -15,7 +15,7 @@ Route::post('/add_review', [RestaurantController::class, 'addReview']);
 //GET methods
 Route::get('/all_user/{id?}', [UserController::class, 'getAllUsers']);
 Route::get('/all_restaurants/{id?}', [RestaurantController::class, 'getAllRestaurants']);
-
+Route::get('/onprogress', [RestaurantController::class, 'getOnProgressReview']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
