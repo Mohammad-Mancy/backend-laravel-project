@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Review;
 
 class RestaurantController extends Controller
 {
@@ -20,6 +21,7 @@ class RestaurantController extends Controller
             "restos" => $restos
         ], 200);
     }
+    //Add Restaurant
     public function addRestaurant(Request $request){
         $restaurant = new Restaurant;
         $restaurant->name = $request->name;
@@ -32,5 +34,18 @@ class RestaurantController extends Controller
             "status" => "Success"
         ], 200);
     }
-
+    //Add review
+    public function addReview(Request $request){
+        $review = new Review;
+        $review->users_id = $request->users_id;
+        $review->restaurants_id = $request->restaurants_id;
+        $review->description = $request->description;
+        $review->rate = $request->rate;
+        $review->status = 'on progress';
+        $review->save();
+        
+        return response()->json([
+            "status" => "Success"
+        ], 200);
+    }
 }
