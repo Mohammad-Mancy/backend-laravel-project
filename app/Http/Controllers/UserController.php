@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    //Sign Up function
     public function signUp(Request $request){
         $user = new User;
         $user->fname=$request->fname;
@@ -25,6 +26,7 @@ class UserController extends Controller
             "status" => "Success"
         ], 200);
     }
+    //Login function
     public function logIn(Request $request)
     {
         $user = User::where('email',$request->email)->first();
@@ -38,5 +40,17 @@ class UserController extends Controller
             return response()->json(['success' => 'success','id'=>$user->id,'name'=>$user->fname,'type'=>$user->type], 200);
 
         }
+    }
+    //Get All Users function
+    public function getAllUsers(Request $request,$id = null){
+        if($id != null){
+            $user = User::find($id);
+        }else{
+            $user = User::all();
+        }
+        return response()->json([
+            "status" => "Success",
+            "user" => $user
+        ], 200);
     }
 }
