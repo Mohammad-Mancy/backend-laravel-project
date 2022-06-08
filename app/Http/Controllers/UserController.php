@@ -53,4 +53,17 @@ class UserController extends Controller
             "user" => $user
         ], 200);
     }
+    //Uppdating User profile
+    public function updateProfile(Request $request,$id){
+        $user = User::find($id);
+        $user->fname=$request->fname;
+        $user->lname=$request->lname;
+        $user->email=$request->email;
+        $user->phone_number=$request->phone_number;
+        $user->update();
+        return response()->json([
+            "status" => "Success",
+            "results" => $user
+        ], 200);
+    }
 }
