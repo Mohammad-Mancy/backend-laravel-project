@@ -18,6 +18,7 @@ Route::post('/delete_review',[RestaurantController::class, 'deleteReview']);
 Route::get('/all_user/{id?}', [UserController::class, 'getAllUsers']);
 Route::get('/all_restaurants/{id?}', [RestaurantController::class, 'getAllRestaurants']);
 Route::get('/onprogress', [RestaurantController::class, 'getOnProgressReview']);
+Route::get('/all_approved_review', [RestaurantController::class, 'allApprovedReview']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

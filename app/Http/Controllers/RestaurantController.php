@@ -83,6 +83,14 @@ class RestaurantController extends Controller
             'msg'=>'fail'];
         }
         return response()->json($data);
+    }
+    //List all review that approved
+    public function allApprovedReview(){
         
+        $review = Review::all();
+        return response()->json([
+            "status" => "Success",
+            "review" => $review
+        ], 200);
     }
 }
