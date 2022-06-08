@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Review;
+use Symfony\Component\HttpFoundation\Response;
+use App\Models\User;
 
 class RestaurantController extends Controller
 {
@@ -65,5 +67,22 @@ class RestaurantController extends Controller
             "status" => "Success",
             "results" => $review
         ], 200);
+    }
+    //Delete review
+    public function deleteReview(Request $request){
+        $del = Review::find($request->id);
+        if($del){
+            $del->delete();
+            $data=[
+            'status'=>'1',
+            'msg'=>'success'];
+        }
+        else{
+            $data=[
+            'status'=>'0',
+            'msg'=>'fail'];
+        }
+        return response()->json($data);
+        
     }
 }
